@@ -1,58 +1,54 @@
 package day04;
 
+import java.util.Scanner;
+
 public class Step2 {
     public static void main(String[] args) {
-        // 연산자 https://github.com/itdanjalog/tj_2024A_backend/blob/master/src/day02/Step3.java
-        int x = 10;     int y = -3;
-        // 1. 산술연산자 : +더하기 -빼기 *곱하기 /나누기 %나머지
-        System.out.println( x + y );    //  10 + 3 => 7
-        System.out.println( x - y );    //  10 - -3 => 13
-        System.out.println( x * y );    //  10 * -3 => -30
-        System.out.println( x / y );    //  10 / -3 => -3
-        System.out.println( x % y );    //  10 % -3 => 1
 
-        // 2. 연결연산자 : +연결연산자 ( 항에 문자/열 포함되는 경우 )
-        System.out.println( "x + y = " + x + y );   // x + y = 10-3
-        System.out.println( "x + y = " + ( x + y)); // x + y = 7
+        // [1] 입력객체 생성 , import java.util.Scanner;
+        Scanner scan = new Scanner(System.in);
 
-        // 3. 비교연산자 : ==같다 !=같지않다 >초과 >=이상 <미만 <=이하
-        System.out.println( x == y ); // false
-        System.out.println( x != y ); // true
-        System.out.println( x > y ); // true
-        System.out.println( x >= y );   // true
-        System.out.println( x < y ); // false
-        System.out.println( x <= y ); // false
+        // [2] 2명의 3가지 데이터 입력 받기 , 총 6번
+        System.out.print("[1] age : ");
+        byte age1 = scan.nextByte();
+        System.out.print("[1] name : ");
+        String name1 = scan.next();
+        System.out.print("[1] content : ");
+        String content1 = scan.next();
 
-        // 4. 논리연산자 : && 이면서 || 이거나 ! 부정
-        System.out.println( x > 5 && x < 20 ); // true && true => true
-        System.out.println( y == -5 || y < 0 ); // false && true => true
-        System.out.println( !(x>=20) ); // false -> !false => true
+        System.out.print("[2] age : ");
+        byte age2 = scan.nextByte();
+        System.out.print("[2] name : ");
+        String name2 = scan.next();
+        System.out.print("[2] content : ");
+        String content2 = scan.next();
 
-        // 5. 복합대입연산자
-        // = 대입연산자 : 오른쪽 값을 왼쪽에 대입 한다.
-        int z = 30;
-        // += -= *= /= %= : 오른쪽 값을 왼쪽 값 과 연산후 결과를 왼쪽에 대입
-        z += 1;
-        z = z + 1;
+        // [3]
+        System.out.println("나이\t작성자\t방문록내용");
+        System.out.println( age1 +"\t" + name1 + "\t" + content1 );
+        System.out.println( age2 +"\t" + name2 + "\t" + content2 );
 
-        // 6. 증감연산자 : ++변수 : 선위증가 , 변수-- : 후위증가 , --변수 : 선위감소 , 변수-- : 후위감소
-        // x = 10
-        System.out.println( x++ );  // 10 , 출력후에 증가
-        System.out.println( x );    // 11
-        System.out.println( ++x );  // 12 , 출력전에 증가
-
-        System.out.println( x-- );  // 12 , 출력후에 감소
-        System.out.println( x );    // 11
-        System.out.println( --x );  // 10 ,
-
-        z++; // 증감 우선순위는 하나의 ; 세미콜론 안에서 결정
-        System.out.println( z ); // 33
-
-        // 7. 삼항연산자  : 조건 ? 참 : 거짓   ,  조건1 ? 참1 : 조건2 ? 참2 : 거짓
-        char result = z >= 30 ? 'T' : 'F';
-        System.out.println("result = " + result);
-
-        char result2 = z >= 50 ? 'T' : z >= 30 ? 'M' : 'F';
-        System.out.println("result2 = " + result2);
     }
 }
+/*
+    실습1 : 입력 , 저장 , 출력 활용
+        - 아래와 같이 출력하시오.
+        - 2명의 나이 와 작성자 와 내용 을 입력받아 출력하시오.
+            - 입력 횟수 : 6번 , ( 나이,작성자,내용 , 나이,작성자,내용 )
+            - 자바에서 입력 받는 방법/준비물
+                1. 입력객체 : Scanner scan = new Scanner( System.in );
+                2. 입력 객체 를 이용한 입력함수 : .next~~~()
+        - 단 변수의 타입은 적절히 사용하세요.  정답은 없지만 , 표현범위 고려
+                나이 = 기본 타입 선정 ??? 고민    , 나이는 소수점이 아니고 문자도 아니므로 주로 정수
+                    int , byte , short , byte -> 나이는 최대 입력이 127 이하 이면 byte
+                작성자 = 기본 타입 선정 ??? 고민  , 작성자는 문자(1글자)  vs 문자열(2글자이상)
+                    String
+                내용 = 기본 타입 선정 ??? 고민
+                    String
+        - 출력예시
+        ============ 방문록 ============
+        나이  작성자   방문록내용
+        40   유재석   안녕하세요!처음입니다.
+        25   강호동   저도,처음입니다.
+        ===============================
+ */
