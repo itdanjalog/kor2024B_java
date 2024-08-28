@@ -1,0 +1,64 @@
+- 컬렉션 프레임워크
+    - 컬렉션(수집) 프레임워크(틀/규칙)
+    - 자바에서 여러 자료들을 수집 관련된 클래스/인터페이스 들 제공한다.
+    - 인터페이스 종류
+        1. List 컬렉션 : 리스트/목록에 자료들을 순서대로 저장하는 자료 구조(방법)
+            - 대표 클래스 : ArrayList , LinkedList , Vector 등
+            - 선언 방법 : List< 제네릭타입 > 변수명 = new ArrayList<>();
+            - 용어 : 1. 인덱스:리스트/목록에 자료들이 저장된 순서번호(0~) , 2.요소 : 리스트/목록의 항목
+            - 메소드
+                1. .add( 자료 )               # 지정한 자료를 리스트에 요소 추가
+                2. .set( 인덱스 , 새로운자료 )  # 지정한 인덱스에 새로운 자료로 수정
+                3. .remove( 인덱스 )           # 지정한 인덱스의 요소 삭제
+                4. .get( 인덱스 )              # 지정한 인덱스의 요소 자료 반환
+                5. .size( )                  # 전체 요소 개수 반환
+                6. .contains( 자료 )          # 지정한 자료가 존재하면 true 아니면 false 반환
+                7. .indexOf( 자료 )           # 지정한 자료가 존재하면 해당 인덱스 반환 아니면 -1 반환
+                8. .clear( )                 # 전체 요소 삭제
+                9. .isEmpty( )               # 요소가 1개도 존재하지 않으면 true 아니면 false 반환
+
+        2. Set 컬렉션 : 집합/목록에 자료들을 무작위로 저장하는 자료 구조(방법)
+            - 대표 클래스 : HashSet , TreeSet 등
+            - 선언 방법 : Set< 제네릭타입 > 변수명 = new HashSet<>();
+            - 주의할점 : List 와 다르게 인덱스(저장순서번호)가 존재하지 않는다. 그러므로 자료의 중복은 불가능하다.
+            - 메소드
+                1. .add( 자료 )               # 지정한 자료를 Set에 요소 추가 , 단 중복이 없을경우
+                2. .remove( 자료 )            # 지정한 자료의 요소 삭제
+                3. .size( )                  # 전체 요소 개수 반환
+                4. .contains( 자료 )          # 지정한 자료가 존재하면 true 아니면 false 반환
+                5. .clear( )                 # 전체 요소 삭제
+                6. .isEmpty( )               # 요소가 1개도 존재하지 않으면 true 아니면 false 반환
+
+        3. Map 컬렉션 : 목록에 key 와 value 를 한쌍으로 하는 엔트리를 저장하는 구조
+            - 대표 클래스 : HashMap , HashTable , TreeMap 등등
+            - 선언 방법 :  Map< key제네릭타입 , value제네릭타입 > 변수명 = new HashMap<>();
+            - 주의할점 : key는 중복 불가능 , value 중복이 가능
+            - 메소드
+                1. .put( key자료 , value자료 ) #  지정한 key 와 value 값을 엔트리 로 map 객체 에 추가
+                2. .get( key )              # 지정한 key의 value 호출
+                3. .size( )                 # 전체 엔트리 개수 반환
+                4. .remove( key )           # 지정한 key의 엔트리 삭제
+                5. .values( )               # 전체 value를 list컬렉션 으로 반환
+                6. .entrySet( )             # 전체 엔트리를 set컬렉션 으로 반환
+                7. .keySet( )               # 전체 key 를 set컬렉션 으로 반환
+                8. .containsKey( key )      # 지정한 key가 존재하면 true 아니면 false 반환
+                9. .containsValue( value )  # 지정한 value가 존재하면 true 아니면 false 반환
+
+    - 컬렉션 프레임워크 와 반복문의 관계 # 컬렉션프레임워크
+        [1] List 구현객체( ArrayList , LinkedList , Vector ) 가능 , Set 구현객체( HashSet , TreeSet ) 불가능
+            for( int index = 0 ;  index < 컬렉션변수.size() ; index++ ){
+                System.out.print( 컬렉션변수.get( index ) ) ;
+            }
+        [2] List 구현객체( ArrayList , LinkedList , Vector ) 가능 , Set 구현객체( HashSet , TreeSet ) 가능 , Map 구현객체 가능
+            컬렉션변수.forEach( 반복변수명 -> { 실행문; } )
+
+            * map 컬렉션 사용시
+            map컬렉션변수.keySet().forEach( 반복변수명 -> { 실행문; } )
+
+
+
+
+
+
+
+
