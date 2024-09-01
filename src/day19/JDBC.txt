@@ -1,0 +1,2 @@
+https://github.com/itdanjalog/kor2024A_java2/tree/main/src/day09
+https://github.com/itdanjalog/tj_2024A_backend/tree/master/src/day15/step2_JDBC
