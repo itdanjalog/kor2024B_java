@@ -1,1 +1,19 @@
 https://github.com/itdanjalog/kor2024A_java2/blob/main/src/day08/Step3.java
+
+
+// [1] 스트림
+//  - 데이터가 다니는 통로 , [ * 바이트 단위로 이동 ]
+//  - 자바 외 외부와 통신할때 주로 사용 ( 키보드,파일,DB,모니터,네트워크 등등 )
+// [2] 파일 관련 스트림
+// 1. FileOutputStream      : 자바 외 파일과 연동 하고 내보내기 관련 기능/메소드 제공한다.
+// - new FileOutputStream("파일경로") : 해당 경로의 파일과 연동 , 해당 경로의 파일이 없으면 파일 생성
+// - new FileOutputStream("파일경로" , true ) : 해당 경로의 파일과 연동 , 해당 경로의 파일이 없으면 파일 생성 , 이어쓰기
+// 2. .write( 바이트배열 )   : 해당 바이트배열을 연동된 파일에 쓰기 처리
+
+// 3. FileInputStream       : 자바 외 파일과 연동 하고 불러오기 관련 기능/메소드 제공한다.
+// - new FileInputStream("파일경로")    : 해당 경로의 파일과 연동
+// 4. .read( 바이트배열 )    : 해당 바이트배열을 연동된 파일에 출력/쓰기 처리
+
+// [3] 경로
+// 1. 상대경로  : 현재 파일의 기준으로 해당 파일 찾아가는 path 방법 , ./src/fileout1.txt
+// 2. 절대경로  : 모든 경로를 기준으로 해당 파일 찾아가는 path 방법 , D:\김현수\kor2024A_java2\src\fileout1.txt
