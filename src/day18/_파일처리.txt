@@ -1,19 +1,29 @@
-https://github.com/itdanjalog/kor2024A_java2/blob/main/src/day08/Step3.java
+- 파일 처리
+    - 자바 외부에 자료들을 읽고 쓰기 하기 위해서 필요하다.
+- 스트림
+    - 컴퓨터내 데이터/자료가 다니는 통로
+    - 자바(JVM) <---- 데이터/자료(스트림) ----> 윈도우(c:)
+    - 즉] 데이터 가 다니는 통로인 스트림은 바이트 단위 로 이동한다.
+- CSV 란
+    - 여러개 필드/속성들을 ,(쉼표) 단위 와 \n(줄바꿈)  구분한 데이터 파일
 
-
-// [1] 스트림
-//  - 데이터가 다니는 통로 , [ * 바이트 단위로 이동 ]
-//  - 자바 외 외부와 통신할때 주로 사용 ( 키보드,파일,DB,모니터,네트워크 등등 )
-// [2] 파일 관련 스트림
-// 1. FileOutputStream      : 자바 외 파일과 연동 하고 내보내기 관련 기능/메소드 제공한다.
-// - new FileOutputStream("파일경로") : 해당 경로의 파일과 연동 , 해당 경로의 파일이 없으면 파일 생성
-// - new FileOutputStream("파일경로" , true ) : 해당 경로의 파일과 연동 , 해당 경로의 파일이 없으면 파일 생성 , 이어쓰기
-// 2. .write( 바이트배열 )   : 해당 바이트배열을 연동된 파일에 쓰기 처리
-
-// 3. FileInputStream       : 자바 외 파일과 연동 하고 불러오기 관련 기능/메소드 제공한다.
-// - new FileInputStream("파일경로")    : 해당 경로의 파일과 연동
-// 4. .read( 바이트배열 )    : 해당 바이트배열을 연동된 파일에 출력/쓰기 처리
-
-// [3] 경로
-// 1. 상대경로  : 현재 파일의 기준으로 해당 파일 찾아가는 path 방법 , ./src/fileout1.txt
-// 2. 절대경로  : 모든 경로를 기준으로 해당 파일 찾아가는 path 방법 , D:\김현수\kor2024A_java2\src\fileout1.txt
+- 파일 처리 와 관련된 클래스 및 메소드
+    1.FileOutputStream 클래스
+        - import java.io.FileOutputStream;
+        - FileOutputStream 변수명 = new FileOutputStream("파일경로");
+        - 일반 예외 처리 필수로 필요하다 .( FileNotFoundException )
+        - 메소드
+            1. .write( 바이트 )
+                - 일반 예외 처리 ( IOException )
+    2. FileInputStream 클래스
+        - import java.io.FileInputStream;
+        - FileInputStream 변수명 = new FileInputStream("파일경로")
+        - 일반 예외 처리 필수로 필요하다 .( FileNotFoundException )
+        - 메소드
+            1. .read( 바이트배열 ) # 지정한 바이트배열에 파일로 부터 읽어온 바이트들을 저장한다.
+    * 파일경로
+        1. 상대경로 : 지정한 파일의 위치부터 경로
+            ./ : 현재 경로 ( 프로젝트폴더)
+            ../ : 상위 경로로 이동하겠다는 뜻
+        2. 절대경로 : 지정한 파일의 위치한 모든 경로
+            C:\Users\admin\IdeaProjects\kor2024B_java1\src\day18

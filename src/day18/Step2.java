@@ -1,34 +1,47 @@
 package day18;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Step2 {
     public static void main(String[] args) {
-
-        // [실습1] 천단위 쉼표 표현하기
-        // [조건] 금액 입력받아 천단위 쉼표 가 포함된 형식으로 출력하시오.
-        // [입력1] 123456  [출력1] 123,456
-        // [입력2] 1234567  [출력2] 1,234,567
+        // [실습1] 입력받은 금액의 천단위 쉼표를 표현하기
+        // [입력1] 123456 --> [출력] 123,456
+        // [입력2] 1234567 --> [출력] 1,234,567
         Scanner scan = new Scanner(System.in);
-        System.out.print("금액 : ");  String money = scan.next();
-
-        // - 천단위 쉼표가 포함된 문자열을 저장할 변수
-        String result = "";
-        // - 입력받은 문자열을 반복문으로 통해 문자 하나씩 순회
-        for( int i = 0 ; i < money.length() ; i++ ){ // - i는 0부터 입력받은문자길이 까지 1씩 증가 반복
-            //System.out.println("i = " + i); // i 출력
-            //System.out.println("money.charAt( i )  = " + money.charAt( i ) ); // i번째 문자 출력
-            //System.out.println("(money.length() - i)  = " + (money.length() - i) ); // 뒤 글자부터 반환
-            // ---------------------- 조건 ------------------ //
-            if( i > 0 && ( money.length() - i ) % 3 == 0  ){ // 뒤에서부터 자릿수가 3의 배수이면 //  배수찾기 : 값%배수 == 0 , 나머지가 0 이면 값은 그 배수
-                result += ","; // 천단위 쉼표를 result 에 대입
+        System.out.print("금액 입력 : ");
+        String money = scan.next();
+            System.out.println("money = " + money); // 1.  입력받은 자료 확인
+        String outStr = "";
+        // 여기에 풀이
+            // 2. 입력받은 문자열을 하나씩 반복문 이용하여 문자 1개씩 추출
+                // * 문자열.length()-1 : 마지막인덱스
+        for( int index = 0 ; index < money.length() ; index++ ){
+            System.out.print( " index : " + index );
+            // 3. 입력받은 문자열 내 문자1개씩 출력
+            System.out.println( "  char : " + money.charAt( index ) );
+                // - 만약에 인덱스가 3의 배수이면
+                // 1. 뒤에서 부터의 자료 확인
+                    // money.length() - index : 7 - 0 - > 7
+                    // money.length() - index : 7 - 1 - > 6
+                    // money.length() # 뒤에서 부터의 자료 확인
+                // 2. 인덱스는 0보다 컸을때만
+            if( index > 0 && ( money.length() - index ) % 3 == 0){
+                outStr += ",";
             }
-            // -- i번째 문자를 result 에 대입
-            result += money.charAt(i);
-            //System.out.println("result = " + result);
+            // 4. 새로운 문자열변수에 옮겨 담기
+            outStr += money.charAt( index ); // # +=복합대입연산자 # 우항값을 좌항에 계산하여 결과를 좌항에 대입 # 누계
         }
-        System.out.println("result = " + result);
-        System.out.println("money = " + money);
-
+        System.out.println("outStr = " + outStr);
     } // main end
-}
+} // class end
+
+
+
+
+
+
+
+
+
+
