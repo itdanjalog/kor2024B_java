@@ -1,0 +1,95 @@
+[1] DB( DATABASE )
+    - 데이터 베이스 # 데이터 저장소
+    - 관계형 데이터베이스 # 행과 열로 이루어진 테이블[표]
+    - 사용이유 ?
+        - 자바의 메모리(JVM) 는 자바가 실행중일때만 메모리 할당 되고 종료되면 메모리가 사라진다.
+        - 즉] 자바가 실행중일때 (변수/객체등) 메모리들이 영구저장이 안된다.
+        - 영구저장 하기위해서 방안
+            1. 파일처리(FILE)
+            2. DATABASE
+    - SQL 질의 어 # 프로그래밍 언어의 일종
+        - 데이터베이스 에서 용하는 프로그래밍 언어
+        - SQL 종류
+            1. DDL : Data Definition Language 데이터 정의 어 # 데이터베이스생성 , 테이블생성
+            2. DML : Data Manipulation Language 데이터 조작 어 # 테이블내 자료들을 C(생성)R(조회)U(수정)D(삭제)
+            3. DCL : Data Control Language 데이터 제어 어
+
+    - 데이터베이스 설치 # MYSQL
+        1. 인터넷 구글 홈페이지에서  'mysql' 검색하기
+        2. 검색된 mysql 홈페이지 접속 # https://www.mysql.com
+        3. 상단 메뉴 'downloads' 클릭
+        4. 페이지 하단에 'MySQL Community (GPL) Downloads' 클릭
+        5. 페이지내 다운로드 목록에서 'MySQL Installer for Windows' 클릭  # https://dev.mysql.com/downloads/
+        6. 페이지내 'Windows (x86, 32-bit), MSI Installer	8.0.39	303.6M' [Download]  # https://dev.mysql.com/downloads/installer/
+        7. 페이지내 'No thanks, just start my download.' 클릭  # https://dev.mysql.com/downloads/file/?id=532678
+
+[2] JDBC
+    - JAVA DATABASE Connectivity # 자바에서 데이터베이스에 접속 할수 있도록 하는 자바 API 이다.
+    - JDBC 라이브러리 다운로드
+        1. 인터넷 구글 홈페이지에서  'mysql' 검색하기
+        2. 검색된 mysql 홈페이지 접속 # https://www.mysql.com
+        3. 상단 메뉴 'downloads' 클릭
+        4. 페이지 하단에 'MySQL Community (GPL) Downloads' 클릭
+        5. 페이지내 다운로드 목록에서 'Connector/J' 클릭  # https://dev.mysql.com/downloads/connector/j/
+        6. 페이지내 Select Operating System 목록에서 ' Platform Independent' 선택
+        7. Platform Independent (Architecture Independent), ZIP Archive	9.0.0	5.1M	[ Download ] 클릭
+        8. 페이지내 'No thanks, just start my download.' 클릭  # https://dev.mysql.com/downloads/file/?id=532678
+        9. 다운로드 받은 파일을 압축풀기
+
+    - 현재 프로젝트의 JDBC 라이브러리 추가하기
+        1. 압축풀이 한 폴더내 'mysql-connector-j-9.0.0.jar' 파일을 현재 패키지/폴더 로 이동/복사
+        2. 'mysql-connector-j-9.0.0.jar' 파일을 오른쪽 클릭 후 메뉴 하단에  'add as Library' 클릭 하기 --> OK 클릭
+
+    - 자바와 DB 연동 코드
+        1. Class.forName(" SQL 라이브러리 이름 "); # 일반예외 발생
+            - Class.forName() : 현재 프로젝트의 존재하는 자바 라이브러리를 로드(불러오기) 하는 함수
+            - SQL 라이브러리 이름 # 암기하지 말고 정리하자. # 현재 사용중인 SQL 에 따라 사용
+                MYSQL : 'com.mysql.cj.jdbc.Driver'
+                ORACLE :  'oracle.jdbc.driver.OracleDriver'
+
+        2. Connection conn = DriverManager.getConnection( " DB URL " , "계정명" , "비밀번호" );  # 일반예외 발생
+            - 위에서 로드된 JDBC 드라이버 클래스를 이용한 DB 와 연동하는 클래스
+                - DB URL : 데이터베이스의 서버 주소 # jdbc:mysql://localhost:3306/데이터베이스명
+                    - localhost 이란 ? ip(네트워크 주소) 대신 현재 컴퓨터의 ip 주소를 뜻 한다.
+                    - 3306 이란 ? mysql 서버의 port( 네트워크에서 프로그램을 식별번호 ) 번호
+                - 계정명 : root 기본값
+                - 비밀빈호 : mysql 설치 할때 설정한 비밀번호 [ 1234 ]
+
+            - 예] Connection conn = DriverManager.getConnection( "jdbc:mysql://localhost:3306/java" , "root" , "1234");
+
+    - 자바에서 SQL 실행하는 방법
+        - 연동된 상태에서 Connection 인터페이스 활용한 sql 구문 실행
+        1. ( DB 상태변화 ) insert 삽입 , update 수정 , delete 삭제
+            - conn.prepareStatement( "SQL구문" ).executeUpdate();
+
+        2. ( DB 상태조회 ) select 조회
+            - ResultSet rs = conn.prepareStatement( "SQL구문" ).executeQuery();
+            - ResultSet                 : select 조회 결과를 조작하는 인터페이스 # 한번에 여러개 결과 레코드 조회방법이 아닌 레코드 하나씩 조회하는 방법 [ Set컬렉션 비슷 ]
+                .next()                 : 조회한 결과의 다음 레코드/행 로 이동 처리 함수 # 만약에 다음 레코드가 존재하면 true 존재하지 않으면 false
+                .getString("속성명")     : 현재 조회 중인 레코드/행 의 지정한 속성명의 값 반환 함수
+
+[3] SQL 구문
+    주석 : #
+    실행 : 실행할 구문에 커서를 두고 CTRL+ENTER
+
+    - 문법
+    1. show databases;                  # 현재 DB서버의 할당된 DB 목록 확인
+    2. create database 새로운DB명;       # 현재 DB서버의 새로운 DB 생성
+        - 예] create database java;
+    3. use DB명;                        # 지정한 DB 사용 활성화
+    4. create table 테이블명(            # 지정한 테이블명 과 속성 으로 테이블 생성
+            속성명 타입 , 속성명2 타입
+       );
+    5. DML
+        - select * from 테이블명;                                    # 지정한 테이블의 모든 레코드 조회
+        - insert into 테이블명(속성명1,속성명2)values( 값1 , 값2 );     # 지정한 테이블의 레코드 삽입 # 속성명1 에 값1 대입 # 속성명2 에 값2 대입
+        - update 테이블명 set 수정속성명 = 새로운값 where 조건절;        # 지정한 테이블명의 수정할속성명에 새로운 값 대입 # 조건 : 조건속성명 = 조건값
+        - delete from 테이블명 where 조건절                           # 지정한 테이블명의 레코드 삭제 # 조건 : 조건속성명 = 조건값
+            - where 절 # where 조건속성명 = 조건값  # 조건속성명의 조건값과 일치하면 true 아니면 false # = 같다 연산자
+
+
+
+
+
+
+
